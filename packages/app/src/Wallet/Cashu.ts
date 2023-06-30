@@ -1,5 +1,7 @@
 import { LNWallet, Sats, WalletError, WalletErrorCode, WalletInfo, WalletInvoice } from "Wallet";
 import { CashuMint, CashuWallet as TheCashuWallet, Proof } from "@cashu/cashu-ts";
+import { addMint } from "../../../../../headless-cashu/dist/lib/es5";
+
 
 export class CashuWallet implements LNWallet {
   #mint: string;

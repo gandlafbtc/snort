@@ -10,6 +10,8 @@ import ConnectNostrWallet from "Pages/settings/wallet/NWC";
 import ConnectCashu from "Pages/settings/wallet/Cashu";
 
 import NostrIcon from "Icons/Nostrich";
+import CashuIcon from "Icons/CashuNut";
+import { initStorage } from "../../../../../../headless-cashu/dist/lib/es5";
 
 const WalletSettings = () => {
   const navigate = useNavigate();
@@ -30,6 +32,12 @@ const WalletSettings = () => {
         <div className="card" onClick={() => navigate("/settings/wallet/nwc")}>
           <NostrIcon width={100} height={100} />
           <h3 className="f-end">Nostr Wallet Connect</h3>
+        </div>
+        <div className="card" onClick={() => {
+          initStorage()
+          navigate("/settings/wallet/cashu")}}>
+          <CashuIcon width={100} height={100} />
+          <h3 className="f-end">Cashu</h3>
         </div>
       </div>
     </>

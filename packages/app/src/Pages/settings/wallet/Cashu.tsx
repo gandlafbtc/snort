@@ -6,6 +6,7 @@ import AsyncButton from "Element/AsyncButton";
 import { unwrap } from "SnortUtils";
 import { WalletConfig, WalletKind, Wallets } from "Wallet";
 import { useNavigate } from "react-router-dom";
+import { addMint } from "../../../../../../../headless-cashu/dist/lib/es5";
 
 const ConnectCashu = () => {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const ConnectCashu = () => {
       if (!mintUrl) {
         throw new Error("Mint URL is required");
       }
-
       const { CashuWallet } = await import("Wallet/Cashu");
       const connection = new CashuWallet(config);
       await connection.login();
@@ -31,6 +31,7 @@ const ConnectCashu = () => {
         data: mintUrl,
       } as WalletConfig;
       Wallets.add(newWallet);
+      addMint(mintUrl)
       navigate("/wallet");
     } catch (e) {
       if (e instanceof Error) {
